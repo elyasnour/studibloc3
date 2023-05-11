@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # local
+    'catalog.apps.CatalogConfig',
 ]
 
 MIDDLEWARE = [
@@ -74,10 +75,10 @@ WSGI_APPLICATION = 'studibloc3.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
+        "NAME": "studibloc3db",
         "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # set in docker-compose.yml
+        "PASSWORD": "nour2011",
+        "HOST": "localhost",  # set in docker-compose.yml
         "PORT": 5432,  # default postgres port
     }
 }
