@@ -5,7 +5,7 @@ from catalog.models import Product, ProductImage
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "category", "price")
+    list_display = ("name", "description", "category", "price", "discount_rate")
     list_filter = ("name", "category",)
     search_fields = ("name", "category")
 

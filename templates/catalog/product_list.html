@@ -17,7 +17,12 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item list-group-item-dark">{{ product.category }}</li>
-                <li class="list-group-item"><span class="price">{{ product.price }} &euro;</span><span class="promotion">promotion</span></li>
+                <li class="list-group-item"><span class="price">{{ product.price }} &euro;</span>
+                    {% if product.discount_rate %}
+                        <span class="promotion">-{{ product.discount_rate }} %</span></li>
+                    {%  else  %}
+                    <span></span>
+                    {% endif %}
             </ul>
         </div>
     {% endfor %}
