@@ -3,7 +3,7 @@
 {% block title %}Search{% endblock title %}
 
 {% block content %}
-    <h6>Resultats de la recherche par "catégorie"</h6>
+    <h6 class="fs-4 fw-normal mt-5">Résultats de la recherche par: {{ q }}</h6>
     <div class="d-flex justify-content-center flex-wrap mt-5">
     {% for product in product_list %}
         <div class="card text-center border-light m-3" style="width: 18rem;">
@@ -18,11 +18,13 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item list-group-item-dark">{{ product.category }}</li>
-                <li class="list-group-item"><span class="price">{{ product.price }} &euro;</span>
-                    {% if product.discount_rate %}
-                        <span class="promotion">-{{ product.discount_rate }} %</span>
+                <li class="list-group-item">
+                    {% if product.discount %}
+                        <del class="price">{{ product.price }} &euro;</del>
+                        <span  class="fw-bold text-danger p-3">{{ product.get_price_with_discount }}</span>
+                        <span  class="fw-normal text-dange">{{ product.discount.discount_rate }} %</span>
                     {%  else  %}
-                    <span></span>
+                        <span class="price">{{ product.price }} &euro;</span>
                     {% endif %}
                     </li>
             </ul>

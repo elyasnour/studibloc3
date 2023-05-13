@@ -3,10 +3,6 @@ from django.views.generic import ListView, TemplateView
 from .models import Product
 
 
-class AboutPageView(TemplateView):  # new
-    template_name = "about.html"
-
-
 class ProductListView(ListView):
     model = Product
     template_name = "catalog/product_list.html"

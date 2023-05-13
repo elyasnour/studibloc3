@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from catalog.models import Product, ProductImage
+from catalog.models import Product, ProductImage, Discount
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "category", "price", "discount_rate")
+    list_display = ("name", "description", "category", "price",)
     list_filter = ("name", "category",)
     search_fields = ("name", "category")
 
@@ -34,3 +34,12 @@ class ProductImageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ProductImage, ProductImageAdmin)
+
+
+class DiscountAdmin(admin.ModelAdmin):
+    list_display = ("discount_rate", "date_start", "date_end",)
+    list_filter = ("date_start",)
+    search_fields = ("date_start",)
+
+
+admin.site.register(Discount, DiscountAdmin)

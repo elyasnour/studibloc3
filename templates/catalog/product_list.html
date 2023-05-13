@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <h1>Tous les produits</h1>
+    <h1 class="fs-1 mt-5">Tous les produits</h1>
     <div class="d-flex justify-content-center flex-wrap">
     {% for product in product_list %}
         <div class="card text-center border-light m-3" style="width: 18rem;">
@@ -17,12 +17,15 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item list-group-item-dark">{{ product.category }}</li>
-                <li class="list-group-item"><span class="price">{{ product.price }} &euro;</span>
-                    {% if product.discount_rate %}
-                        <span class="promotion">-{{ product.discount_rate }} %</span></li>
+                <li class="list-group-item">
+                    {% if product.discount %}
+                        <del class="price">{{ product.price }} &euro;</del>
+                        <span  class="fw-bold text-danger p-3">{{ product.get_price_with_discount }}</span>
+                        <span  class="fw-normal text-danger">{{ product.discount.discount_rate }} %</span>
                     {%  else  %}
-                    <span></span>
+                        <span class="price">{{ product.price }} &euro;</span>
                     {% endif %}
+                </li>
             </ul>
         </div>
     {% endfor %}
