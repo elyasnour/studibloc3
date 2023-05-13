@@ -1,0 +1,15 @@
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+    
+h1, h6 {
+    color: red;
+    text-align: center;
+}
+.promotion {
+    padding: 5px;
+    color: red;
+    margin-left: 15px;
+
+}

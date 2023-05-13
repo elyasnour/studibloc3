@@ -25,4 +25,4 @@ class ProductTests(TestCase):
         response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Un super vélô de competition")
-        self.assertTemplateUsed(response, "product_list.html")
+        self.assertTemplateUsed(response, "catalog/product_list.html")

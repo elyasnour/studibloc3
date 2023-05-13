@@ -8,7 +8,7 @@ from django.dispatch import receiver
 from django.db.models.signals import pre_save
 from .models import ProductImage
 
-THUMBNAIL_SIZE = (150, 150)
+THUMBNAIL_SIZE = (300, 300)
 
 logger = logging.getLogger(__name__)
 
