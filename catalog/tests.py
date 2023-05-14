@@ -1,8 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 
-
-from .models import Product
+from .models import Product, Discount
 
 
 class ProductTests(TestCase):
@@ -13,6 +12,7 @@ class ProductTests(TestCase):
             description="Un super vélô de competition",
             category="Sport",
             price=1250.99,
+
         )
 
     def test_product_content(self):
@@ -26,3 +26,14 @@ class ProductTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Un super vélô de competition")
         self.assertTemplateUsed(response, "catalog/product_list.html")
+
+
+class DiscountTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.discount = Discount.objects.create(
+            discount_rate=-30,
+        )
+
+    def test_model_content(self):
+        self.assertEqual(self.discount.discount_rate, -30)

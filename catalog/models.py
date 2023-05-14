@@ -4,7 +4,7 @@ from django.db import models
 class Discount(models.Model):
     discount_rate = models.IntegerField(blank=True, null=True)
     date_start = models.DateField(auto_now_add=True)
-    date_end = models.DateField()
+    date_end = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.discount_rate} %"
