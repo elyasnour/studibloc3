@@ -37,7 +37,7 @@
             <select class="form-select m-3" type="search" name="q" aria-label="Search">
                 <option selected>Chercher par catégorie</option>
                 {% for product in product_list %}
-                        <option value="{{ product.category }}">{{ product.category }}</option>
+                        <option value="{{ product.category|lower }}">{{ product.category|lower }}</option>
                 {% endfor %}
             </select>
             <button class="btn btn-outline-success m-3" type="submit">Rechercher</button>
