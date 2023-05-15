@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from environs import Env  # new
+
+env = Env()  # new
+env.read_env()  # new
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2u4xc*_60mit81yvq0ph3oef@yqgtap13g%+r3bu$b23!mjv63'
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DJANGO_DEBUG")  # new
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]  # new
 
 # Application definition
 
@@ -80,14 +84,8 @@ WSGI_APPLICATION = 'studibloc3.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "studibloc3db",
-        "USER": "postgres",
-        "PASSWORD": "nour2011",
-        "HOST": "localhost",  # set in docker-compose.yml
-        "PORT": 5432,  # default postgres port
-    }
+    "default": env.dj_db_url("DATABASE_URL",
+                             default="postgres://postgres@db/postgres")
 }
 
 # Password validation
