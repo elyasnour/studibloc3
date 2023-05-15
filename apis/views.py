@@ -9,6 +9,5 @@ class ProductAPIView(generics.ListAPIView):
 
 
 class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (permissions.IsAdminUser,)  # new
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
