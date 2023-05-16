@@ -1,0 +1,1 @@
+web: gunicorn studibloc3.wsgi --log-file -
