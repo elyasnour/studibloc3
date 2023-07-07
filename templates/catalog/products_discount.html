@@ -1,0 +1,42 @@
+{%  extends "_base.html" %}
+
+
+{% block content %}
+ <h6 class="fs-4 text-left mt-5">Tous les produits en promotion</h6>
+    <p>&Agrave; la date du {{ date }}</p>
+
+     <table class="table table-bordered border-secondary">
+          <thead>
+             <tr>
+                 <th>Image</th>
+                 <th>Nom</th>
+                 <th>prix</th>
+                 <th>Promotion</th>
+                 <th>Prix avec promotion</th>
+
+                 <th>Début de la promotion</th>
+                 <th>Fin de la promotion</th>
+             </tr>
+          </thead>
+          <tbody>
+             {% for product in product_list %}
+                 {% if product.discount and product.discount.fin_promotion %}
+                    <tr>
+                        <td>
+                        {% for image in product.productimage_set.all %}
+                        <img width="60" height="auto" src="{{ image.thumbnail.url }}"/>
+                        {% endfor %}
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }} &euro;</td>
+                        <td>{{ product.discount.discount_rate }} %</td>
+                        <td>{{ product.get_price_with_discount }} &euro;</td>
+                        <td>{{ product.discount.date_start }}</td>
+                        <td>{{ product.discount.date_end }}</td>
+                    </tr>
+                 {% endif %}
+             {% endfor %}
+          </tbody>
+    </table>
+    <a type="button" class="btn btn-outline-success" href="{% url 'create-pdf' %}">Télécharger le PDF</a>
+{% endblock %}

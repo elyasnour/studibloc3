@@ -1,10 +1,14 @@
 from django.db import models
+import datetime
 
 
 class Discount(models.Model):
     discount_rate = models.IntegerField(blank=True, null=True)
     date_start = models.DateField(auto_now_add=True)
     date_end = models.DateField(blank=True, null=True)
+
+    def fin_promotion(self):
+        return datetime.date.today() < self.date_end
 
     def __str__(self):
         return f"{self.discount_rate} %"

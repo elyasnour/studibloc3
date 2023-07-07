@@ -11,6 +11,9 @@
       crossorigin="anonymous">
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+<script src="https://unpkg.com/htmx.org@1.9.2"
+        integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h"
+        crossorigin="anonymous"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -31,16 +34,15 @@
           <li class="nav-item">
             <a class="nav-link fs-5" href="{% url 'home' %}">Catalogue</a>
             </li>
+            {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link fs-5" href="{% url 'discount' %}">Promotions</a>
+                </li>
+            {% endif %}
         </ul>
         <form class="d-flex" action="{% url 'search_results' %}" method="get">
-
-            <select class="form-select m-3" type="search" name="q" aria-label="Search">
-                <option selected>Chercher par catégorie</option>
-                {% for product in product_list %}
-                        <option value="{{ product.category|lower }}">{{ product.category|lower }}</option>
-                {% endfor %}
-            </select>
-            <button class="btn btn-outline-success m-3" type="submit">Rechercher</button>
+            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search" >
+            <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>

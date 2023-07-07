@@ -27,6 +27,9 @@ class ProductTests(TestCase):
         self.assertContains(response, "Un super vélô de competition")
         self.assertTemplateUsed(response, "catalog/product_list.html")
 
+    def test_create_pdf_with_html(self):
+        pass
+
 
 class DiscountTest(TestCase):
     @classmethod
