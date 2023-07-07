@@ -6,7 +6,7 @@ from django.urls import path, include
 from studibloc3 import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('tout-sauf-admin/', admin.site.urls),
     path('', include('catalog.urls')),
     path("api/", include("apis.urls")), # new
     path("api-auth/", include("rest_framework.urls")),
