@@ -28,7 +28,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", default=False)  # new
 
-ALLOWED_HOSTS = ["myerm-studibloc3-df7dc64a034d.herokuapp.com", "localhost", "127.0.0.1"]  # new
+ALLOWED_HOSTS = ["stormy-savannah-09251-833ae6989ba5.herokuapp.com", "localhost", "127.0.0.1"]  # new
 
 # Application definition
 
