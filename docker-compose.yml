@@ -7,18 +7,18 @@ services:
     volumes:
       - .:/studibloc3
     ports:
-      - 8000:8000
+      - 8080:8080
     depends_on:
       - db
     environment:
-      - "DJANGO_SECRET_KEY=5EISYbFluL-56hJA23f4_VsAdj8aVYi__UuqpW2RLoAEEfwPJmY"
-      - "DJANGO_DEBUG=False"
-      - "DJANGO_SECURE_SSL_REDIRECT=True" # new
+      - "DJANGO_SECRET_KEY=k65EvKtdZoHifk3CdsyMTnZOKxheqAjoh7R9WnLpqr3f7L0FtqY"
+      - "DJANGO_DEBUG=True"
+      - "DJANGO_SECURE_SSL_REDIRECT=False" # new
       - "DJANGO_SECURE_HSTS_SECONDS=0" # new
       - "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False" # new
       - "DJANGO_SECURE_HSTS_PRELOAD=False" # new
-      - "DJANGO_SESSION_COOKIE_SECURE=True" # new
-      - "DJANGO_CSRF_COOKIE_SECURE=True" # new
+      - "DJANGO_SESSION_COOKIE_SECURE=False" # new
+      - "DJANGO_CSRF_COOKIE_SECURE=False" # new
 
 
   db:
