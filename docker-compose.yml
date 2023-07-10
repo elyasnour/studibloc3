@@ -3,15 +3,15 @@ services:
   web:
     build: .
     #command: python /studibloc3/manage.py runserver 0.0.0.0:8000
-    command: gunicorn studibloc3.wsgi -b 0.0.0.0:8080 # new
+    command: gunicorn studibloc3.wsgi -b 0.0.0.0:8000 # new
     volumes:
       - .:/studibloc3
     ports:
-      - 8080:8080
+      - 8000:8000
     depends_on:
       - db
     environment:
-      - "DJANGO_SECRET_KEY=k65EvKtdZoHifk3CdsyMTnZOKxheqAjoh7R9WnLpqr3f7L0FtqY"
+      - "DJANGO_SECRET_KEY=atmmVPCFA8D4SrtKnAG9ZVcnCTs_AXVGts3-GWxBcZE"
       - "DJANGO_DEBUG=True"
       - "DJANGO_SECURE_SSL_REDIRECT=False" # new
       - "DJANGO_SECURE_HSTS_SECONDS=0" # new
